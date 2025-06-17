@@ -2,16 +2,12 @@ import streamlit as st
 from datetime import datetime
 import gspread
 from google.oauth2.service_account import Credentials
-
 import json
-
 
 # Configuración de Google Sheets usando st.secrets
 SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 creds_dict = st.secrets["gcp_service_account"]
-
-# NO uses json.loads/json.dumps aquí
-CREDS = ServiceAccountCredentials.from_service_account_info(creds_dict, scopes=SCOPE)
+CREDS = Credentials.from_service_account_info(creds_dict, scopes=SCOPE)
 client = gspread.authorize(CREDS)
 
 # ID y nombre de la hoja de cálculo

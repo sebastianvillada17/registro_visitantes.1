@@ -26,6 +26,18 @@ st.markdown(
     "<p style='text-align: center;'>Bienvenido a nuestro Hogar, Por favor, complete el siguiente formulario para registrar su entrada, y al momento de salir registra tu salida.</p>",
     unsafe_allow_html=True
 )
+# Ocultar la foto de perfil (avatar) de Streamlit
+hide_avatar_css = """
+    <style>
+        header [data-testid="stHeader"] {
+            background-color: white;
+        }
+        [data-testid="stUserMenu"] {
+            display: none !important;
+        }
+    </style>
+"""
+st.markdown(hide_avatar_css, unsafe_allow_html=True)
 
 # Limpiar estado de sesión 
 if "submitted" not in st.session_state:
